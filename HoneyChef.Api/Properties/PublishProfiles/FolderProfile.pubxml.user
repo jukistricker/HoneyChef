@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\WorkSpace\CNTT\Core\ioitcore\IOITCore\IOITCore\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2025-02-14T04:48:06.5258430Z||;True|2025-02-13T13:58:24.4965434+07:00||;True|2025-02-12T11:20:54.5956578+07:00||;False|2025-02-12T11:16:59.4179684+07:00||;True|2025-02-10T10:43:13.8136880+07:00||;True|2025-02-10T10:42:36.3991707+07:00||;True|2025-02-08T09:16:08.6672239+07:00||;True|2025-02-07T15:59:13.5738365+07:00||;True|2025-02-07T14:58:43.6227695+07:00||;True|2025-02-07T14:58:15.8930479+07:00||;True|2025-02-07T14:49:44.1701637+07:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
