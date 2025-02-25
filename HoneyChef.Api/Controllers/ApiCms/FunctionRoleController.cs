@@ -31,6 +31,13 @@ namespace IOITCore.Controllers.ApiCms
             _entityService = entityService;
         }
 
+        [HttpGet("test")]
+        [AllowAnonymous]
+        public async Task<IActionResult> test()
+        {
+            return Ok(await  _entityService.test());    
+        }
+
         [HttpGet("GetByPage")]
         public async Task<IActionResult> GetByPage([FromQuery] FilteredPagination paging)
         {

@@ -32,17 +32,17 @@ namespace IOITCore.Controllers.ApiCms
         private readonly IConfiguration _configuration;
         private readonly IUserService _entityService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IOfficeService _officeService;
+        
         private readonly IUserRepository _userRepository;
         private readonly IHostingEnvironment _hostingEnvironment;
 
         public UserController(IConfiguration configuration, IUserService entityService,
-            IHttpContextAccessor httpContextAccessor, IOfficeService officeService, IUserRepository userRepository, IHostingEnvironment hostingEnvironment)
+            IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, IHostingEnvironment hostingEnvironment)
         {
             _configuration = configuration;
             _entityService = entityService;
             _httpContextAccessor = httpContextAccessor;
-            _officeService = officeService;
+            
             _userRepository = userRepository;
             _hostingEnvironment = hostingEnvironment;
         }
@@ -597,69 +597,69 @@ namespace IOITCore.Controllers.ApiCms
 
         //}
 
-        [HttpPost("ImportExcel")]
-        public async Task<ActionResult> ImportExcel()
-        {
-            var def = new DefaultResponse();
+        //[HttpPost("ImportExcel")]
+        //public async Task<ActionResult> ImportExcel()
+        //{
+        //    var def = new DefaultResponse();
 
 
-            string template = @"Template/test.xlsx";
-            string webRootPath = _hostingEnvironment.WebRootPath;
-            string templatePath = Path.Combine(webRootPath, template);
+        //    string template = @"Template/test.xlsx";
+        //    string webRootPath = _hostingEnvironment.WebRootPath;
+        //    string templatePath = Path.Combine(webRootPath, template);
 
-            var data = _officeService.ImportExcel(templatePath, 0, 1, 5);
+        //    var data = _officeService.ImportExcel(templatePath, 0, 1, 5);
 
-            def.data = data;
+        //    def.data = data;
 
-            return Ok(def);
-        }
+        //    return Ok(def);
+        //}
 
-        [HttpPost("ExportExcelTemplate")]
-        public async Task<ActionResult> ExportExcelTemplate()
-        {
-            var def = new DefaultResponse();
+        //[HttpPost("ExportExcelTemplate")]
+        //public async Task<ActionResult> ExportExcelTemplate()
+        //{
+        //    var def = new DefaultResponse();
 
-            string template = @"Template/TemplateTest.xlsx";
-            string webRootPath = _hostingEnvironment.WebRootPath;
-            string templatePath = Path.Combine(webRootPath, template);
+        //    string template = @"Template/TemplateTest.xlsx";
+        //    string webRootPath = _hostingEnvironment.WebRootPath;
+        //    string templatePath = Path.Combine(webRootPath, template);
 
-            var User = _userRepository.All().Where(p => p.Status != ApiEnums.EntityStatus.DELETED).ToList();
+        //    var User = _userRepository.All().Where(p => p.Status != ApiEnums.EntityStatus.DELETED).ToList();
 
-            var ListFields = new List<string>();
-            ListFields.Add("FullName");
-            ListFields.Add("UserName");
-            ListFields.Add("Email");
-            ListFields.Add("Password");
+        //    var ListFields = new List<string>();
+        //    ListFields.Add("FullName");
+        //    ListFields.Add("UserName");
+        //    ListFields.Add("Email");
+        //    ListFields.Add("Password");
 
-            MemoryStream ms = _officeService.ExportExcelTemplate(templatePath, 0, 5, 1, User, ListFields);
-            byte[] byteArrayContent = ms.ToArray();
-            return File(ms.ToArray(), "application/vnd.ms-excel", $"User_{DateTime.Now:MM_yyyy_HHmmss}");
-        }
+        //    MemoryStream ms = _officeService.ExportExcelTemplate(templatePath, 0, 5, 1, User, ListFields);
+        //    byte[] byteArrayContent = ms.ToArray();
+        //    return File(ms.ToArray(), "application/vnd.ms-excel", $"User_{DateTime.Now:MM_yyyy_HHmmss}");
+        //}
 
-        [HttpPost("NoTemplate")]
-        public async Task<IActionResult> NoTemplate()
-        {
-            var def = new DefaultResponse();
+        //[HttpPost("NoTemplate")]
+        //public async Task<IActionResult> NoTemplate()
+        //{
+        //    var def = new DefaultResponse();
 
-            var User = _userRepository.All().Where(p => p.Status != ApiEnums.EntityStatus.DELETED).ToList();
+        //    var User = _userRepository.All().Where(p => p.Status != ApiEnums.EntityStatus.DELETED).ToList();
 
-            var ListHeader = new List<string>();
-            ListHeader.Add("FullName");
-            ListHeader.Add("UserName");
-            ListHeader.Add("Email");
-            ListHeader.Add("Password");
+        //    var ListHeader = new List<string>();
+        //    ListHeader.Add("FullName");
+        //    ListHeader.Add("UserName");
+        //    ListHeader.Add("Email");
+        //    ListHeader.Add("Password");
 
-            var ListFields = new List<string>();
-            ListFields.Add("FullName");
-            ListFields.Add("UserName");
-            ListFields.Add("Email");
-            ListFields.Add("Password");
+        //    var ListFields = new List<string>();
+        //    ListFields.Add("FullName");
+        //    ListFields.Add("UserName");
+        //    ListFields.Add("Email");
+        //    ListFields.Add("Password");
 
 
-            MemoryStream ms = _officeService.ExportExcelNoTemplate(ListHeader, 0, 5, 1, User, ListFields);
-            byte[] byteArrayContent = ms.ToArray();
-            return File(ms.ToArray(), "application/vnd.ms-excel", $"User_{DateTime.Now:MM_yyyy_HHmmss}");
-        }
+        //    MemoryStream ms = _officeService.ExportExcelNoTemplate(ListHeader, 0, 5, 1, User, ListFields);
+        //    byte[] byteArrayContent = ms.ToArray();
+        //    return File(ms.ToArray(), "application/vnd.ms-excel", $"User_{DateTime.Now:MM_yyyy_HHmmss}");
+        //}
 
     }
 }

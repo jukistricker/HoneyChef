@@ -90,7 +90,7 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 //
 builder.Services.AddCors((options => {
     options.AddPolicy("addcors", builder =>
-    builder.AllowAnyOrigin()
+    builder.SetIsOriginAllowed(c => true)
     .AllowAnyMethod()
     .AllowAnyHeader()
     .AllowCredentials());
@@ -155,6 +155,10 @@ builder.Services.Configure<GzipCompressionProviderOptions>(options =>
 {
     options.Level = System.IO.Compression.CompressionLevel.Fastest; // Cấu hình mức nén
 });
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 700 * 1024 * 1024; // 700MB
+});
 //
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -179,7 +183,7 @@ app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "IOITCore API By IOIT");
 });
-
+app.Urls.Add("http://0.0.0.0:5000");
 app.UseCors("addcors");
 app.UseResponseCompression();
 app.UseHttpsRedirection();

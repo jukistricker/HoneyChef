@@ -8,6 +8,7 @@ using IOITCore.Models.ViewModels;
 using IOITCore.Models.ViewModels.Bases;
 using IOITCore.Repositories.Interfaces;
 using IOITCore.Services.Interfaces;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Polly;
 using Serilog;
@@ -358,6 +359,11 @@ namespace IOITCore.Services
         private string GetClientIpAddress()
         {
             return _contextAccessor.HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
+        }
+
+        public async Task<IQueryable<FunctionRole>> test()
+        {
+            return _functionRoleRepo.All();
         }
     }
 }
