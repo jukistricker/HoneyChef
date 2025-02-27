@@ -1,6 +1,9 @@
-﻿using IOITCore.Entities;
+﻿using HoneyChef.Api.Entities;
+using IOITCore.Entities;
 using IOITCore.Entities.Bases;
 using IOITCore.Persistence.Base;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+
 
 
 //using IOITCore.Interfaces.Helpers;
@@ -24,14 +27,23 @@ namespace IOITCore.Persistence
         public virtual DbSet<UserMapping> UserMappings { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<LogAction> LogActions { get; set; }
-
-
+        // main db manager
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Country> Countrys { get; set; }
+        public virtual DbSet<DetailDirection> DetailDirections { get; set; }
+        public virtual DbSet<Direction> Directions { get; set; }
+        public DbSet<Food> Foods { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<RecipeCategory> recipeCategories { get; set; }
+        //
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             var assembly = typeof(EntityTypeBaseConfiguration<>).Assembly;
             modelBuilder.ApplyConfigurationsFromAssembly(assembly);
+
 
             modelBuilder.Entity<Function>(entity =>
             {
