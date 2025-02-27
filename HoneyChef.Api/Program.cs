@@ -16,6 +16,8 @@ using Microsoft.EntityFrameworkCore;
 using IOITCore.Services.Common;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.ResponseCompression;
+using HoneyChef.Api.Repositories.Interfaces;
+using HoneyChef.Api.Repositories;
 
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
@@ -62,7 +64,10 @@ builder.Services.AddTransient<IRoleRepository, RoleRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserRoleRepository, UserRoleRepository>();
 builder.Services.AddTransient<ILogActionRepository, LogActionRepository>();
-//
+// add DI recipe
+builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+
+// end add recipe recipe 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 //
 builder.Services.AddTransient<IFunctionRoleService, FunctionRoleService>();
