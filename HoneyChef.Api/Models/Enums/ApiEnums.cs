@@ -128,5 +128,13 @@ namespace IOITCore.Enums
             DATE_UPDATED = 3, //cập nhật
         }
 
+        public enum Unit
+        {
+            gam = 1,
+            ml = 2,
+            pcs =3,
+            
+        }
+
     }
 }
