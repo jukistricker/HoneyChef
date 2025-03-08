@@ -2,8 +2,8 @@
 
 namespace HoneyChef.Api.Entities
 {
-    public class Category : AbstractEntity<int>
+    public class Category:AbstractEntity<long>
     {
-        public string Title { get; set; }
+        public string? CategoryName { get; set; }
     }
 }

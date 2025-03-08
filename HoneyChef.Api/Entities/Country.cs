@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using IOITCore.Entities.Bases;
 
 namespace HoneyChef.Api.Entities
 {
-    public class Country : AbstractEntity<int>
+    public class Country: AbstractEntity<long>
     {
-        public int? IdParent { get; set; }
-        public string CountryName { get; set; } = string.Empty;
+        public string? CountryName { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using HoneyChef.Api.Entities;
+using HoneyChef.Api.Entities;
 using IOITCore.Entities;
 using IOITCore.Entities.Bases;
 using IOITCore.Persistence.Base;
@@ -27,16 +27,17 @@ namespace IOITCore.Persistence
         public virtual DbSet<UserMapping> UserMappings { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<LogAction> LogActions { get; set; }
+
         // main db manager
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Country> Countrys { get; set; }
         public virtual DbSet<DetailDirection> DetailDirections { get; set; }
         public virtual DbSet<Direction> Directions { get; set; }
         public DbSet<Food> Foods { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<RecipeCategory> recipeCategories { get; set; }
-        //
+        public virtual DbSet<Review> Reviews { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -129,6 +130,46 @@ namespace IOITCore.Persistence
             {
                 entity.Property(e => e.ActionName).HasMaxLength(100);
                 entity.Property(e => e.IpAddress).HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<Recipe>(entity =>
+            {
+                entity.Property(e=>e.Title).HasMaxLength(100)
+                .IsRequired();
+                entity.Property(e=>e.Description).HasMaxLength(1000)
+                .IsRequired();
+                
+            });
+
+            modelBuilder.Entity<Country>(entity =>
+            {
+                entity.Property(e => e.CountryName).HasMaxLength(100)
+                .IsRequired();
+            });
+
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.Property(e => e.CategoryName).HasMaxLength(100)
+                .IsRequired();
+            });
+
+            modelBuilder.Entity<Ingredient>(entity =>
+            {
+                entity.Property(e => e.IngTitle).HasMaxLength(1000)
+                .IsRequired();
+            });
+
+            modelBuilder.Entity<Direction>(entity =>
+            {
+                entity.Property(e => e.Title).HasMaxLength(100)
+                .IsRequired();
+            });
+            modelBuilder.Entity<Review>(entity =>
+            {
+                entity.Property(e => e.rating)
+                .IsRequired();
+                entity.Property(e => e.review).HasMaxLength(1000)
+                .IsRequired();
             });
 
         }

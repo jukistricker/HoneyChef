@@ -1,10 +1,10 @@
-﻿using IOITCore.Entities.Bases;
+using IOITCore.Entities.Bases;
 
 namespace HoneyChef.Api.Entities
 {
-    public class RecipeCategory : AbstractEntity<int>
+    public class RecipeCategory:AbstractEntity<long>
     {
-        public int IdRecipe { get; set; }
-        public int IdCategory { get; set; }
+        public long? RecipeId { get; set; }
+        public long? CategoryId { get; set; }
     }
 }
