@@ -1,4 +1,4 @@
-﻿using HoneyChef.Api.Entities;
+using HoneyChef.Api.Entities;
 using IOITCore.Entities.Bases;
 
 namespace HoneyChef.Api.Entities
@@ -27,3 +27,4 @@ namespace HoneyChef.Api.Entities
 //Name nvarchar NOT NULL 
 //Quantity int NOT NULL 
 //Unit int (Enum - nullable)
+

@@ -1,4 +1,4 @@
-﻿using IOITCore.Entities.Bases;
+using IOITCore.Entities.Bases;
 
 namespace HoneyChef.Api.Entities
 {
@@ -25,3 +25,4 @@ namespace HoneyChef.Api.Entities
 //FK2 
 //Countryld int NOT NULL 
 //AvgRating float NOT NULL
+

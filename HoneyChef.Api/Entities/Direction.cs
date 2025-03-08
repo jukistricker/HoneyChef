@@ -1,4 +1,4 @@
-﻿using IOITCore.Entities.Bases;
+using IOITCore.Entities.Bases;
 
 namespace HoneyChef.Api.Entities
 {
@@ -6,6 +6,6 @@ namespace HoneyChef.Api.Entities
     {
         public long? RecipeId { get; set; }
         public string? Title { get; set; }
-        public Guid? reference_mongo_id { get; set; }
+        public Guid? reference_mongo_id { get; set; } 
     }
 }

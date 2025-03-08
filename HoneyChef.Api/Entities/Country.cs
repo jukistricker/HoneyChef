@@ -1,4 +1,5 @@
-﻿using IOITCore.Entities.Bases;
+using System.ComponentModel.DataAnnotations;
+using IOITCore.Entities.Bases;
 
 namespace HoneyChef.Api.Entities
 {
