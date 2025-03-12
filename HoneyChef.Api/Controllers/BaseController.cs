@@ -77,7 +77,7 @@ namespace IOITCore.Controllers
                 User = User,
                 Identity = identity,
                 access_key = identity.Claims.Where(c => c.Type == "AccessKey").Select(c => c.Value).SingleOrDefault() ?? string.Empty,
-                fullName = identity.Claims.Where(c => c.Type == "FullName").Select(c => c.Value).SingleOrDefault() ?? string.Empty,
+                fullName = identity.Claims.Where(c => c.Type == "Name").Select(c => c.Value).SingleOrDefault() ?? string.Empty,
                 userId = int.Parse(identity.Claims.Where(c => c.Type == "UserId").Select(c => c.Value).SingleOrDefault() ?? "0"),
                 userMapId = int.Parse(identity.Claims.Where(c => c.Type == "UserMapId").Select(c => c.Value).SingleOrDefault() ?? "0"),
                 roleMax = int.Parse(identity.Claims.Where(c => c.Type == "RoleMax").Select(c => c.Value).SingleOrDefault() ?? "9999"),

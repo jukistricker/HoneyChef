@@ -5,7 +5,7 @@ using IOITCore.Repositories.Interfaces.Bases;
 
 namespace HoneyChef.Api.Repositories.Interfaces
 {
-    public interface IRecipeRepository : IAsyncGenericRepository<Recipe, Guid>
+    public interface IRecipeRepository : IAsyncGenericRepository<Recipe, long>
     {
         
     }

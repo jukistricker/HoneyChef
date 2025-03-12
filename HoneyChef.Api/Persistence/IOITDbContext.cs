@@ -30,12 +30,13 @@ namespace IOITCore.Persistence
 
         // main db manager
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<DetailDirection> DetailDirections { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<DirectionDetail> DirectionDetails { get; set; }
         public virtual DbSet<Direction> Directions { get; set; }
         public DbSet<Food> Foods { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<RecipeCategory> recipeCategories { get; set; }
+        public DbSet<RecipeCategory> RecipeCategories { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
