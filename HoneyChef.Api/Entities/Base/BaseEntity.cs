@@ -6,8 +6,6 @@ namespace IOITCore.Entities.Bases
     {
         public virtual TId Id { get; set; }
         public virtual EntityStatus Status { get; set; }
-        public virtual string? UserCreated { get; set; }
-        public virtual string? UserUpdated { get; set; }
         public virtual DateTime CreatedAt { get; set; }
         public virtual DateTime UpdatedAt { get; set; }
         public virtual int? CompanyId { get; set; }
@@ -18,8 +16,7 @@ namespace IOITCore.Entities.Bases
     {
         public virtual int Id { get; set; }
         public virtual EntityStatus Status { get; set; }
-        public virtual string? UserCreated { get; set; }
-        public virtual string? UserUpdated { get; set; }
+ 
         public virtual DateTime CreatedAt { get; set; }
         public virtual DateTime UpdatedAt { get; set; }
         public virtual int? CompanyId { get; set; }

@@ -18,6 +18,10 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.ResponseCompression;
 using HoneyChef.Api.Repositories.Interfaces;
 using HoneyChef.Api.Repositories;
+using HoneyChef.Api.Services.Interfaces;
+using HoneyChef.Api.Services;
+using HoneyChef.Api.Models.Validators;
+using FluentValidation;
 
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
@@ -64,8 +68,10 @@ builder.Services.AddTransient<IRoleRepository, RoleRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserRoleRepository, UserRoleRepository>();
 builder.Services.AddTransient<ILogActionRepository, LogActionRepository>();
+
 // add DI recipe
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+builder.Services.AddScoped<ICountryRepository,CountryRepository>();
 
 // end add recipe recipe 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
@@ -74,6 +80,8 @@ builder.Services.AddTransient<IFunctionRoleService, FunctionRoleService>();
 builder.Services.AddTransient<IFunctionService, FunctionService>();
 builder.Services.AddTransient<IUserRoleService, UserRoleService>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IRoleService, RoleService>(); 
+builder.Services.AddTransient<ICountryServices,CountryServices>();
 //builder.Services.AddTransient<IOfficeService, OfficeService>();
 //
 builder.Services.AddScoped<ICacheService, CacheService>();
@@ -82,6 +90,10 @@ builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 //builder.Services.AddScoped<HttpContextAccessor>();
+
+//fluentValidation
+builder.Services.AddValidatorsFromAssemblyContaining<CountryValidator>();
+
 // Mssql Configuration
 builder.Services.AddDbContext<IOITDbContext>(options =>
     options.ConfigureWarnings(b => b.Log(CoreEventId.ManyServiceProvidersCreatedWarning))
@@ -188,7 +200,7 @@ app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "IOITCore API By IOIT");
 });
-app.Urls.Add("http://0.0.0.0:5000");
+// app.Urls.Add("http://0.0.0.0:5000");
 app.UseCors("addcors");
 app.UseResponseCompression();
 app.UseHttpsRedirection();

@@ -35,6 +35,7 @@ namespace IOITCore.Services
 
         public async Task<DefaultResponse> GetByPage(UserClaims userClaims, FilteredPagination paging)
         {
+            Console.WriteLine("heheeeeeeee");
             DefaultResponse def = new DefaultResponse();
             if (paging != null)
             {
@@ -84,20 +85,23 @@ namespace IOITCore.Services
                 else
                 {
                     var listFunctionRoles= _functionRoleRepo.All().Where(fr => fr.TargetId == 1).ToList();
-                    def.data = await data.Select(e => new
-                    {
-                        e.Id,
-                        e.Name,
-                        e.Code,
-                        e.Note,
-                        e.LevelRole,
-                        e.Status,
-                        listFunction = listFunctionRoles.Where(fr => fr.TargetId == e.Id).Select(fr => new
-                        {
-                            fr.FunctionId,
-                            fr.ActiveKey
-                        }).ToList()
-                    }).ToListAsync();
+                    def.data = await (from e in data
+                  join fr in _functionRoleRepo.All() on e.Id equals fr.TargetId into functionRoles
+                  select new
+                  {
+                      e.Id,
+                      e.Name,
+                      e.Code,
+                      e.Note,
+                      e.LevelRole,
+                      e.Status,
+                      listFunction = functionRoles.Select(fr => new
+                      {
+                          fr.FunctionId,
+                          fr.ActiveKey
+                      }).ToList()
+                  }).ToListAsync();
+
                 }
                 return def;
             }

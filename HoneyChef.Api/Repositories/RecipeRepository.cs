@@ -5,7 +5,7 @@ using IOITCore.Repositories.Bases;
 
 namespace HoneyChef.Api.Repositories
 {
-    public class RecipeRepository : AsyncGenericRepository<Recipe, Guid> , IRecipeRepository
+    public class RecipeRepository : AsyncGenericRepository<Recipe, long> , IRecipeRepository
     {
         private readonly IOITDbContext _context;
 
