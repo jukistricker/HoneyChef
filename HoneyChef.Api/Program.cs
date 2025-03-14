@@ -22,6 +22,8 @@ using HoneyChef.Api.Services.Interfaces;
 using HoneyChef.Api.Services;
 using HoneyChef.Api.Models.Validators;
 using FluentValidation;
+using FluentValidation.AspNetCore;
+using CloudinaryDotNet;
 
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
@@ -73,6 +75,7 @@ builder.Services.AddTransient<ILogActionRepository, LogActionRepository>();
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
 builder.Services.AddScoped<ICountryRepository,CountryRepository>();
 
+
 // end add recipe recipe 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 //
@@ -82,6 +85,7 @@ builder.Services.AddTransient<IUserRoleService, UserRoleService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IRoleService, RoleService>(); 
 builder.Services.AddTransient<ICountryServices,CountryServices>();
+builder.Services.AddTransient<IMediaServices, MediaService>(); 
 //builder.Services.AddTransient<IOfficeService, OfficeService>();
 //
 builder.Services.AddScoped<ICacheService, CacheService>();
@@ -91,8 +95,24 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 //builder.Services.AddScoped<HttpContextAccessor>();
 
+
+builder.Services.AddSingleton<MediaService>();
+
+//cloudinary
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
+
+var cloudinarySettings = builder.Configuration.GetSection("Cloudinary").Get<CloudinarySettings>();
+var account = new Account(cloudinarySettings.CloudName, cloudinarySettings.ApiKey, cloudinarySettings.ApiSecret);
+var cloudinary = new Cloudinary(account);
+
+builder.Services.AddSingleton(cloudinary);
+
 //fluentValidation
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<CountryValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<RecipeDtoValidator>();
+
 
 // Mssql Configuration
 builder.Services.AddDbContext<IOITDbContext>(options =>
