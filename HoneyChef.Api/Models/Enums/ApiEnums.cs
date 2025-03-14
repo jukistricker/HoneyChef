@@ -50,13 +50,6 @@ namespace IOITCore.Enums
             FUNCTION_ROLE = 2,    // Nhóm quyền - Chức năng
         }
 
-        public enum TypeUserProject    // Phân quyền người dùng với đơn vị và dự án
-        {
-            USER_UNIT = 1, // Người dùng - Đơn vị
-            USER_PROJECT = 2,    // Người dùng - Dự án
-            USER_CONTRACT= 3,    // Người dùng - Hợp đồng
-        }
-
         public enum TypeUser
         {
             ADMINISTRATOR = 1, //quản trị hệ thống

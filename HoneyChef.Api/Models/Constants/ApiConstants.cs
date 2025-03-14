@@ -24,18 +24,7 @@ namespace IOITCore.Constants
 
         public static class MessageWarning
         {
-            public const string WARNING_2111_EXIT_TOWER = "Tòa nhà không tồn tại!";
-            public const string WARNING_2112_EXIT_PROJECT = "Khu đô thị không tồn tại!";
-            public const string WARNING_2113_EXIT_FLOOR = "Tầng không tồn tại!";
-            public const string WARNING_2114_EXIT_ZONE = "Vị trí không tồn tại!";
             public const string WARNING_2115_EXIT_COUNTRY = "Quốc gia không tồn tại!";
-            public const string WARNING_2116_EXIT_PROVINCE = "Tỉnh TP không tồn tại!";
-            public const string WARNING_2117_EXIT_DISTRICT = "Quận huyện không tồn tại!";
-            public const string WARNING_2118_EXIT_WARD = "Phường xã không tồn tại!";
-            public const string WARNING_2119_EXIT_APARTMENT = "Cư dân không tồn tại!";
-            public const string WARNING_21110_EXIT_DEPARTMENT = "Phòng ban không tồn tại!";
-            public const string WARNING_21111_EXIT_HOTLINE = "Hotline không tồn tại!";
-            public const string WARNING_21112_EXIT_NEW = "Tin tức không tồn tại!";
 
             public const string WARNING_21115_DUPLICATE_CODE = "Trường mã đã tồn tại!";
             public const string WARNING_21113_EXIT_CODE = "Trường mã không được để trống!";
@@ -79,7 +68,7 @@ namespace IOITCore.Constants
             public const string NOPERMISION_UPDATE_MESSAGE = "Bạn không có quyền cập nhật mục này!";   //error_code = 222
             public const string NOPERMISION_CREATE_MESSAGE = "Bạn không có quyền thêm mới mục này!";   //error_code = 222
             public const string NOPERMISION_DELETE_MESSAGE = "Bạn không có quyền xoá mục này!";   //error_code = 222
-            public const string NOPERMISION_ACCEPT_MESSAGE = "Bạn không có quyền duyệt đơn đăng ký!";
+            public const string NOPERMISION_ACCEPT_MESSAGE = "Bạn không có quyền duyệt mục này!";
             public const string NOPERMISION_ACTION_MESSAGE = "Bạn không có quyền thực hiện thao tác này!";
             #endregion
 
