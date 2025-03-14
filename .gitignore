@@ -3,3 +3,5 @@
 /obj
 **/obj/
 **/bin/
+HoneyChef.Api/appsettings.json
+HoneyChef.Api/appsettings.Development.json
